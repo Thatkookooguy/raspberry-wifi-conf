@@ -111,14 +111,20 @@ app.directive("rwcPasswordEntry", function($timeout) {
                                 // content that the modal scope might define in the
                                 // DOM)
         template: [
-            "<div class='rwc-password-entry-container' ng-class='{\"hide-me\": !visible}'>",
-            "    <div class='box'>",
-            "         <input type = 'password' placeholder = 'Passcode...' ng-model = 'passcode' />",
-            "         <div class = 'btn btn-cancel' ng-click = 'reset(null)'>Cancel</div>",
-            "         <div class = 'btn btn-ok' ng-click = 'submit()'>Submit</div>",
-            "    </div>",
-            "</div>"
-        ].join("\n"),
+            '<div class="modal" ng-class="{\'is-active\': visible}">'
+            '<div class="modal-background"></div>',
+            '<div class="modal-card">',
+            '<section class="modal-card-body">',
+            '<div class="field"><div class="control">',
+            '<input class="input is-warning" type="password" placeholder="Passcode..."',
+            ' ng-model="passcode"',
+            '</div></div>',
+            '</section>'
+            '<footer class="modal-card-foot">',
+            '<button class="button is-warning" ng-click="submit()">Connect</button>',
+            '<button class="button" ng-click="reset(null)">Cancel</button>',
+            '</footer></div></div>'
+          ].join("\n"),
 
         // Link function to bind modal to the app
         link: function(scope, element, attributes) {
